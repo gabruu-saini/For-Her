@@ -572,15 +572,15 @@ function createEmojiRain(emoji) {
 document.addEventListener('DOMContentLoaded', function() {
   // Set up memory message boxes with unique content
   const memoryMessages = [
-    "The night we watched the stars, hand in hand, and promised forever. 🌌",
-    "When you hugged me after a rough day, my world felt at peace. 🤗", 
-    "Laughing until midnight on our first road trip. 🚗💨"
+    "The day i prposed you with the ring, we both were lost in each other. 🌌",
+    "When i had a rough day,You gave me a paper kiss.Made my day! 🤗", 
+    "Like your way of caring for me by asking me to sleep,which made me creep."
   ];
 
   const memoryPhotos = [
     { url: "memory1.jpg", caption: "Our first selfie together!" },
-    { url: "memory2.jpg", caption: "Your smile lights up my world." },
-    { url: "memory3.mp4", caption: "Unforgettable day at the beach." }
+    { url: "memory2.jpg", caption: "Your words, as a lovely order." },
+    { url: "memory3.jpg", caption: "The cringe day🤤" }
   ];
 
   const featureData = [
