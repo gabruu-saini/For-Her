@@ -1,136 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Happy Girlfriend's Day ❤️</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<!-- Music Controls -->
-<div class="music-controls">
-  <button id="musicToggle" class="music-toggle-btn" onclick="toggleBackgroundMusic()">
-    <span id="musicIcon">🎵</span>
-    <span id="musicText">Music</span>
-  </button>
+<!-- Loading Screen -->
+<div id="loadingScreen" class="loading-screen">
+    <div class="loading-content">
+        <div class="floating-hearts-loading">
+            <div class="heart-animation">💕</div>
+            <div class="heart-animation heart-delay-1">💖</div>
+            <div class="heart-animation heart-delay-2">💗</div>
+        </div>
+
+        <div class="welcome-text">
+            <h1 class="loading-title">Welcome, Beautiful ✨</h1>
+            <p class="loading-subtitle">Preparing something special for you...</p>
+        </div>
+
+        <div class="loading-bar-container">
+            <div class="loading-bar">
+                <div class="progress-fill"></div>
+            </div>
+            <div class="loading-percentage">Loading your surprises...</div>
+        </div>
+
+        <div class="main-heart">💖</div>
+    </div>
+
+    <div class="loading-hearts-bg"></div>
 </div>
 
-<!-- Background Audio Element (hidden) -->
-<audio id="backgroundMusic" loop preload="auto">
+<!-- Music Controls (initially hidden) -->
+<div class="music-controls" style="display: none;">
+    <button id="musicToggle" class="music-toggle-btn" onclick="toggleBackgroundMusic()">
+        <span id="musicIcon">🎵</span>
+        <span id="musicText">Music</span>
+    </button>
+</div>
+
+<!-- audio tag -->
+<audio id="backgroundMusic" loop preload="auto" playsinline>
   <source src="romantic-background.mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
 </audio>
 
-<body>
-    <div class="floating-hearts" id="heartsContainer"></div>
-    
-    <div class="container">
-        <div class="main-section">
-            <h1 class="main-title">Happy Girlfriend's Day</h1>
-            <p class="romantic-message">
-                To the most beautiful soul who lights up my world ✨<br>
-                Today is all about celebrating YOU 💕<br>
-                Mere Kavya ji😘
-            </p>
-            
-            <div class="love-card">
-                <div class="love-features">
-                    <div class="feature-card" onclick="showFeatureDetail('Your Beauty', 'Inside and out, you are absolutely stunning', '🌹')">
-                        <span class="feature-icon">🌹</span>
-                    </div>
-                    <div class="feature-card" onclick="showFeatureDetail('Your Heart', 'So pure, loving and full of kindness', '💝')">
-                        <span class="feature-icon">💝</span>
-                    </div>
-                    <div class="feature-card" onclick="showFeatureDetail('Your Smile', 'It brightens up even my darkest days', '✨')">
-                        <span class="feature-icon">✨</span>
-                    </div>
-                    <div class="feature-card" onclick="showFeatureDetail('Your Spirit', 'Free, beautiful and absolutely captivating', '🦋')">
-                        <span class="feature-icon">🦋</span>
-                    </div>
-                    <div class="feature-card" onclick="showFeatureDetail('Your Dreams', 'I want to support every single one', '💫')">
-                        <span class="feature-icon">💫</span>
-                    </div>
-                    <div class="feature-card" onclick="showFeatureDetail('Our Bond', 'Unbreakable, real and forever strong', '🔒')">
-                        <span class="feature-icon">🔒</span>
-                    </div>
+
+<!-- Background Audio Element -->
+<audio id="backgroundMusic" loop preload="auto">
+    <source src="romantic-background.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+</audio>
+
+<!-- Your existing floating hearts container continues here -->
+<div class="floating-hearts" id="heartsContainer"></div>
+
+<div class="container">
+    <div class="main-section">
+        <h1 class="main-title">Happy Girlfriend's Day</h1>
+        <p class="romantic-message">
+            To the most beautiful soul who lights up my world ✨<br>
+            Today is all about celebrating YOU 💕<br>
+            Mere Kavya ji😘
+        </p>
+
+        <div class="love-card">
+            <div class="love-features">
+                <div class="feature-card"
+                    onclick="showFeatureDetail('Your Beauty', 'Inside and out, you are absolutely stunning', '🌹')">
+                    <span class="feature-icon">🌹</span>
                 </div>
-                
-                <div class="memory-gallery">
-                    <div class="memory-box memory-message" onclick="showMemoryDetail(this, 'The day i prposed you with the ring, we both were lost in each other.')">
-                        💕<span class="memory-label">Memory</span>
-                    </div>
-                    <div class="memory-box memory-message" onclick="showMemoryDetail(this, 'When i had a rough day,You gave me a paper kiss.Made my day!')">
-                        🌸<span class="memory-label">Memory</span>
-                    </div>
-                    <div class="memory-box memory-message" onclick="showMemoryDetail(this, 'Like your way of caring for me by asking me to sleep,which made me creep.')">
-                        🔪<span class="memory-label">Memory</span>
-                    </div>
-                    <div class="memory-box memory-photo" onclick="showMemoryImage(this, 'memory1.jpg', 'Our first selfie together!')">
-                        🌺<span class="memory-label">Photo</span>
-                    </div>
-                    <div class="memory-box memory-photo" onclick="showMemoryImage(this, 'memory2.jpg', 'Your words, as a lovely order.')">
-                        💐<span class="memory-label">Photo</span>
-                    </div>
-                    <div class="memory-box memory-photo" onclick="showMemoryImage(this, 'memory3.jpg', 'The cringe day🤤.')">
-                        🎀<span class="memory-label">Photo</span>
-                    </div>
+                <div class="feature-card"
+                    onclick="showFeatureDetail('Your Heart', 'So pure, loving and full of kindness', '💝')">
+                    <span class="feature-icon">💝</span>
+                </div>
+                <div class="feature-card"
+                    onclick="showFeatureDetail('Your Smile', 'It brightens up even my darkest days', '✨')">
+                    <span class="feature-icon">✨</span>
+                </div>
+                <div class="feature-card"
+                    onclick="showFeatureDetail('Your Spirit', 'Free, beautiful and absolutely captivating', '🦋')">
+                    <span class="feature-icon">🦋</span>
+                </div>
+                <div class="feature-card"
+                    onclick="showFeatureDetail('Your Dreams', 'I want to support every single one', '💫')">
+                    <span class="feature-icon">💫</span>
+                </div>
+                <div class="feature-card"
+                    onclick="showFeatureDetail('Our Bond', 'Unbreakable, real and forever strong', '🔒')">
+                    <span class="feature-icon">🔒</span>
                 </div>
             </div>
-            
-            <div class="surprise-section">
-                <h2 class="surprise-title">I Have Something Special For You</h2>
-                <p class="surprise-description">
-                    Words straight from my heart, written just for you...
-                </p>
-                <button class="unlock-button" onclick="revealPoem()">
-                    💝 Unlock My Heart 💝
-                </button>
-                <div class="poem-container" id="poemContainer">
-                    <div class="poem-text">
-                        <div class="stanza">
-                            <div>We've had our storms, I won't deny,</div>
-                            <div>some days we drift, some nights we cry.</div>
-                            <div>But through the noise, through all the strain,</div>
-                            <div>you're still my peace, my constant flame.</div>
-                        </div>
-                        <div class="stanza">
-                            <div>I don't love you for the easy part,</div>
-                            <div>I love your soul, your honest heart.</div>
-                            <div>Even when we break or fall apart,</div>
-                            <div>The other is there to light the jar.</div>
-                        </div>
-                        <div class="stanza">
-                            <div>We're not perfect, and that's okay,</div>
-                            <div>we talk, we pause, but always stay.</div>
-                            <div>No crack can end what we begin,</div>
-                            <div>we lose, we learn and then we win.</div>
-                        </div>
-                        <div class="stanza">
-                            <div>So here's to us, the real, the true,</div>
-                            <div>no matter what, I'll stand with you.</div>
-                            <div>This love won't fade, it won't decay,</div>
-                            <div>I'm yours in every single way.</div>
-                        </div>
-                        <div class="stanza">
-                            <div>I see my future in your eyes,</div>
-                            <div>in dreams we hold and days to come.</div>
-                            <div>You're not just mine for now or then,</div>
-                            <div>you're my forever, time and again.</div>
-                        </div>
-                        <div class="final-message">
-                            So on this day, I just want to say,<br>
-                            I'd choose you still, in every way.<br>
-                            <strong>
-                                Happy Girlfriend's Day, my life,<br>
-                                my heartbeat, my strength,<br>
-                                my future wife. ❤️
-                            </strong>
-                        </div>
+
+            <div class="memory-gallery">
+                <div class="memory-box memory-message"
+                    onclick="showMemoryDetail(this, 'The day i prposed you with the ring, we both were lost in each other.')">
+                    💕<span class="memory-label">Memory</span>
+                </div>
+                <div class="memory-box memory-message"
+                    onclick="showMemoryDetail(this, 'When i had a rough day,You gave me a paper kiss.Made my day!')">
+                    🌸<span class="memory-label">Memory</span>
+                </div>
+                <div class="memory-box memory-message"
+                    onclick="showMemoryDetail(this, 'Like your way of caring for me by asking me to sleep,which made me creep.')">
+                    🔪<span class="memory-label">Memory</span>
+                </div>
+                <div class="memory-box memory-photo"
+                    onclick="showMemoryImage(this, 'memory1.jpg', 'Our first selfie together!')">
+                    🌺<span class="memory-label">Photo</span>
+                </div>
+                <div class="memory-box memory-photo"
+                    onclick="showMemoryImage(this, 'memory2.jpg', 'Your words, as a lovely order.')">
+                    💐<span class="memory-label">Photo</span>
+                </div>
+                <div class="memory-box memory-photo"
+                    onclick="showMemoryImage(this, 'memory3.jpg', 'The cringe day🤤.')">
+                    🎀<span class="memory-label">Photo</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="surprise-section">
+            <h2 class="surprise-title">I Have Something Special For You</h2>
+            <p class="surprise-description">
+                Words straight from my heart, written just for you...
+            </p>
+            <button class="unlock-button" onclick="revealPoem()">
+                💝 Unlock My Heart 💝
+            </button>
+            <div class="poem-container" id="poemContainer">
+                <div class="poem-text">
+                    <div class="stanza">
+                        <div>We've had our storms, I won't deny,</div>
+                        <div>some days we drift, some nights we cry.</div>
+                        <div>But through the noise, through all the strain,</div>
+                        <div>you're still my peace, my constant flame.</div>
+                    </div>
+                    <div class="stanza">
+                        <div>I don't love you for the easy part,</div>
+                        <div>I love your soul, your honest heart.</div>
+                        <div>Even when we break or fall apart,</div>
+                        <div>The other is there to light the jar.</div>
+                    </div>
+                    <div class="stanza">
+                        <div>We're not perfect, and that's okay,</div>
+                        <div>we talk, we pause, but always stay.</div>
+                        <div>No crack can end what we begin,</div>
+                        <div>we lose, we learn and then we win.</div>
+                    </div>
+                    <div class="stanza">
+                        <div>So here's to us, the real, the true,</div>
+                        <div>no matter what, I'll stand with you.</div>
+                        <div>This love won't fade, it won't decay,</div>
+                        <div>I'm yours in every single way.</div>
+                    </div>
+                    <div class="stanza">
+                        <div>I see my future in your eyes,</div>
+                        <div>in dreams we hold and days to come.</div>
+                        <div>You're not just mine for now or then,</div>
+                        <div>you're my forever, time and again.</div>
+                    </div>
+                    <div class="final-message">
+                        So on this day, I just want to say,<br>
+                        I'd choose you still, in every way.<br>
+                        <strong>
+                            Happy Girlfriend's Day, my life,<br>
+                            my heartbeat, my strength,<br>
+                            my future wife. ❤️
+                        </strong>
+                    </div>
+                    <div class="bye">
+                        Its time to say buy for a short time,😔<br>
+                        Bye my cutie Kavya Ji <br>
+                        Yours ~Gabruu Saini
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    
-    <script src="app.js"></script>
+</div>
+
+<script src="app.js"></script>
 </body>
+
 </html>
