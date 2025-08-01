@@ -12,22 +12,22 @@ let musicStarted = false;
 // ==========================================
 
 // Initialize everything when page loads
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
     initializeBackgroundMusic();
     startLoadingSequence();
 });
 
 function initializeBackgroundMusic() {
     backgroundMusic = document.getElementById('backgroundMusic');
-    
+
     if (!backgroundMusic) {
         console.warn('Background music element not found');
         return;
     }
-    
+
     // Set initial volume (subtle background music)
     backgroundMusic.volume = 0.3;
-    
+
     // Add event listeners for music events
     backgroundMusic.addEventListener('play', onMusicPlay);
     backgroundMusic.addEventListener('pause', onMusicPause);
@@ -39,17 +39,17 @@ function startLoadingSequence() {
     const loadingScreen = document.getElementById('loadingScreen');
     const progressBar = document.querySelector('.progress-fill');
     const welcomeText = document.querySelector('.welcome-text');
-    
+
     if (!loadingScreen) {
         console.error('Loading screen not found');
         return;
     }
-    
+
     // Start progress bar animation
     if (progressBar) {
         progressBar.style.width = '100%';
     }
-    
+
     // Animate welcome text
     if (welcomeText) {
         setTimeout(() => {
@@ -57,7 +57,7 @@ function startLoadingSequence() {
             welcomeText.style.transform = 'translateY(0)';
         }, 500);
     }
-    
+
     // After 4 seconds, complete loading and start music
     setTimeout(() => {
         completeLoading();
@@ -66,7 +66,7 @@ function startLoadingSequence() {
 
 function completeLoading() {
     const loadingScreen = document.getElementById('loadingScreen');
-    
+
     if (loadingScreen) {
         loadingScreen.style.opacity = '0';
         setTimeout(() => {
@@ -82,11 +82,11 @@ function completeLoading() {
 
 function startBackgroundMusic() {
     if (!backgroundMusic || musicStarted) return;
-    
+
     console.log('Attempting to start background music...');
-    
+
     const playPromise = backgroundMusic.play();
-    
+
     if (playPromise !== undefined) {
         playPromise
             .then(() => {
@@ -116,7 +116,7 @@ function showMusicButton() {
     if (musicControls) {
         musicControls.style.display = 'block';
         musicControls.style.animation = 'musicControlsSlideIn 1s ease-out';
-        
+
         const musicBtn = document.getElementById('musicToggle');
         if (musicBtn) {
             musicBtn.style.animation = 'musicPulse 2s ease-in-out infinite';
@@ -140,7 +140,7 @@ function toggleBackgroundMusic() {
         console.error('Background music not initialized');
         return;
     }
-    
+
     if (isMusicPlaying) {
         pauseBackgroundMusic();
     } else {
@@ -150,9 +150,9 @@ function toggleBackgroundMusic() {
 
 function playBackgroundMusic() {
     if (!backgroundMusic) return;
-    
+
     const playPromise = backgroundMusic.play();
-    
+
     if (playPromise !== undefined) {
         playPromise
             .then(() => {
@@ -195,9 +195,9 @@ function updateMusicButton(isPlaying) {
     const musicBtn = document.getElementById('musicToggle');
     const musicIcon = document.getElementById('musicIcon');
     const musicText = document.getElementById('musicText');
-    
+
     if (!musicBtn || !musicIcon || !musicText) return;
-    
+
     if (isPlaying) {
         musicBtn.classList.add('playing');
         musicIcon.textContent = '🎵';
@@ -219,7 +219,7 @@ function updateMusicButton(isPlaying) {
 function createFloatingHeart() {
     const heartsContainer = document.getElementById('heartsContainer');
     if (!heartsContainer) return;
-    
+
     const heart = document.createElement('div');
     heart.className = 'heart';
     heart.innerHTML = ['💖', '💕', '💗', '💓', '💝'][Math.floor(Math.random() * 5)];
@@ -289,7 +289,7 @@ function revealPoem() {
 // Memory message tooltip
 function showMemoryDetail(element, messageText) {
     if (!element || !messageText) return;
-    
+
     // Remove any existing tooltips
     document.querySelectorAll('.memory-tooltip').forEach(tooltip => tooltip.remove());
 
@@ -297,7 +297,7 @@ function showMemoryDetail(element, messageText) {
     const tooltip = document.createElement('div');
     tooltip.className = 'memory-tooltip';
     tooltip.textContent = messageText;
-    
+
     // Position relative to the clicked element
     element.style.position = 'relative';
     element.appendChild(tooltip);
@@ -313,7 +313,7 @@ function showMemoryDetail(element, messageText) {
 // Memory image popup
 function showMemoryImage(element, imageUrl, imageCaption) {
     if (!element || !imageUrl || !imageCaption) return;
-    
+
     if (isPopupOpen) return;
     isPopupOpen = true;
 
@@ -359,7 +359,7 @@ function showMemoryImage(element, imageUrl, imageCaption) {
         overlay.classList.remove('fade-in');
         overlay.classList.add('fade-out');
         isPopupOpen = false;
-        
+
         setTimeout(() => {
             if (overlay && overlay.parentNode) {
                 overlay.remove();
@@ -393,7 +393,7 @@ function showMemoryImage(element, imageUrl, imageCaption) {
 // Feature detail overlay
 function showFeatureDetail(card) {
     if (!card) return;
-    
+
     const title = card.querySelector('.feature-title')?.textContent || 'Feature';
     const text = card.querySelector('.feature-text')?.textContent || 'Description';
     const emoji = card.querySelector('.feature-icon')?.textContent || '💖';
@@ -454,12 +454,12 @@ function showFeatureDetail(card) {
 // Create emoji rain effect
 function createEmojiRain(emoji) {
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
-    
+
     // Create rain container
     const emojiRain = document.createElement('div');
     emojiRain.id = 'emojiRainOverlay';
     emojiRain.className = 'emoji-rain';
-    
+
     document.body.appendChild(emojiRain);
 
     const emojiCount = isMobile ? 15 : 30;
@@ -471,12 +471,12 @@ function createEmojiRain(emoji) {
         const drop = document.createElement('div');
         drop.textContent = emoji;
         drop.className = 'emoji-raindrop';
-        
+
         // Random positioning and properties
         drop.style.left = Math.random() * (isMobile ? 90 : 95) + 'vw';
         drop.style.fontSize = (isMobile ? 16 + Math.random() * 8 : 24 + Math.random() * 16) + 'px';
         drop.style.animationDelay = (Math.random() * 1.5) + 's';
-        
+
         const drift = (Math.random() > 0.5 ? 1 : -1) * (Math.random() * 15 + 5);
         drop.style.setProperty('--drift', drift + 'vw');
 
@@ -503,9 +503,9 @@ function createEmojiRain(emoji) {
 // ==========================================
 
 // Page visibility API to handle tab switching
-document.addEventListener('visibilitychange', function() {
+document.addEventListener('visibilitychange', function () {
     if (!backgroundMusic || !isMusicPlaying || !musicStarted) return;
-    
+
     if (document.hidden) {
         backgroundMusic.pause();
     } else {
@@ -518,7 +518,7 @@ document.addEventListener('visibilitychange', function() {
 });
 
 // Ensure music starts even if loading screen is skipped
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     setTimeout(() => {
         if (!loadingComplete && !musicStarted) {
             startBackgroundMusic();
@@ -527,11 +527,11 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Initialize everything when DOM is loaded
-window.addEventListener('DOMContentLoaded', function() {
+window.addEventListener('DOMContentLoaded', function () {
     // Set up memory data
     const memoryMessages = [
         "The day I proposed you with the ring, we both were lost in each other. 🌌",
-        "When I had a rough day, You gave me a paper kiss. Made my day! 🤗", 
+        "When I had a rough day, You gave me a paper kiss. Made my day! 🤗",
         "Like your way of caring for me by asking me to sleep, which made me creep. 😴"
     ];
 
@@ -540,6 +540,7 @@ window.addEventListener('DOMContentLoaded', function() {
         { url: "memory2.jpg", caption: "Your words, as a lovely order." },
         { url: "memory3.jpg", caption: "The cringe day 🤤" }
     ];
+    
 
     // Set up memory message boxes
     const messageBoxes = document.querySelectorAll('.memory-message');
@@ -575,11 +576,20 @@ window.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    const featureData = [
+        { title: "Your Beauty", text: "Inside and out, you are absolutely stunning", emoji: "🌹" },
+        { title: "Your Heart", text: "So pure, loving and full of kindness", emoji: "💝" },
+        { title: "Your Smile", text: "It brightens up even my darkest days", emoji: "✨" },
+        { title: "Your Spirit", text: "Free, beautiful and absolutely captivating", emoji: "🦋" },
+        { title: "Your Dreams", text: "I want to support every single one", emoji: "💫" },
+        { title: "Our Bond", text: "Unbreakable, real and forever strong", emoji: "🔒" }
+    ];
+
     // Initial animations
     for (let i = 0; i < 5; i++) {
         setTimeout(createFloatingHeart, i * 1000);
     }
-    
+
     for (let i = 0; i < 3; i++) {
         setTimeout(createPetal, i * 1500);
     }
